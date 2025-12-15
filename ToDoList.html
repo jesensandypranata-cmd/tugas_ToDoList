@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List Sederhana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 8px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        li {
+            padding: 8px;
+            background: #eee;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        li button {
+            background: red;
+            width: auto;
+            padding: 4px 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>List Pencapaian</h2>
+    <input type="text" id="todoInput" placeholder="Masukkan pencapaian">
+    <button onclick="addTodo()">Tambah</button>
+    <ul id="todoList"></ul>
+</div>
+
+<script>
+    function addTodo() {
+        let input = document.getElementById("todoInput");
+        let text = input.value;
+
+        if (text === "") {
+            alert("Tugas tidak boleh kosong!");
+            return;
+        }
+
+        let li = document.createElement("li");
+        li.textContent = text;
+
+        let btn = document.createElement("button");
+        btn.textContent = "Hapus";
+        btn.onclick = function () {
+            li.remove();
+        };
+
+        li.appendChild(btn);
+        document.getElementById("todoList").appendChild(li);
+
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
